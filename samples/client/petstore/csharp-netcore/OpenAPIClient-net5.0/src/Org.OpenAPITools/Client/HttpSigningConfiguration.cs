@@ -743,7 +743,7 @@ namespace Org.OpenAPITools.Client
             //var pkcs8Header = "BEGIN PRIVATE KEY";
             //var pkcs8Footer = "END PRIVATE KEY";
             PrivateKeyType keyType;
-            var key = KeyString.TrimEnd().Split("\n");
+            var key = KeyString.TrimEnd().Split('\n');
 
             if (key[0].Contains(rsaPrivateKeyHeader) &&
                 key[key.Length - 1].ToString().Contains(rsaPrivateFooter))
