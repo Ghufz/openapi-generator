@@ -122,7 +122,7 @@ namespace Org.OpenAPITools.Client
             var HttpSignatureHeader = new Dictionary<string, string>();
 
             //Read the api key from the file
-            if(!string.IsNullOrEmpty(this.KeyFilePath))
+            if(string.IsNullOrEmpty(this.KeyString))
             {
                 this.KeyString = ReadApiKeyFromFile(KeyFilePath);
             }
@@ -769,11 +769,6 @@ namespace Org.OpenAPITools.Client
         private string ReadApiKeyFromFile(string apiKeyFilePath)
         {
             string apiKeyString = null;
-            if(!string.IsNullOrEmpty(apiKeyFilePath) && !string.IsNullOrEmpty(this.KeyString))
-            {
-                throw new Exception("Configure either the KeyFilePath or configure the KeyString property.");
-            }
-
             if(File.Exists(apiKeyFilePath))
             {
                 apiKeyString = File.ReadAllText(apiKeyFilePath);
